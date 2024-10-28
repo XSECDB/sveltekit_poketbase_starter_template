@@ -1,7 +1,8 @@
 import PocketBase from 'pocketbase';
 import { writable } from 'svelte/store';
+import { env } from '$env/dynamic/public';
 
-export const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
+export const pb = new PocketBase(env.PUBLIC_POCKETBASE_URL);
 
 /**
  * @type {import('svelte/store').Writable<any>}
@@ -19,7 +20,12 @@ pb.authStore.onChange((auth) => {
  * @param {string} password
  */
 export async function login(email, password) {
-    return await pb.collection('users').authWithPassword(email, password);
+    try {
+        return await pb.collection('users').authWithPassword(email, password);
+    } catch (error) {
+        console.error('Auth error:', error);
+        throw error;
+    }
 }
 
 /**

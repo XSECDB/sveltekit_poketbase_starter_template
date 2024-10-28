@@ -7,5 +7,8 @@ export default defineConfig({
 		alias: {
 			$lib: '/src/lib'
 		}
+	},
+	server: {
+		cors: true
 	}
 });
