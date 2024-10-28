@@ -36,11 +36,20 @@ cd sveltekit-poketbase-starter-template
 npm install
 ```
 
-3. Configure PocketBase:
-   - Update the PocketBase URL in `src/lib/pocketbase.js`
+3. Set up environment variables:
+   - Copy `.env.example` to `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Update `PUBLIC_POCKETBASE_URL` in `.env` with your PocketBase instance URL:
+     ```
+     PUBLIC_POCKETBASE_URL="https://your-pocketbase-url.com"
+     ```
+
+4. Configure PocketBase:
    - Set up your PocketBase collections (users collection is required)
 
-4. Start the development server:
+5. Start the development server:
 ```bash
 npm run dev
 ```
@@ -60,7 +69,17 @@ src/
 │   ├── login/          # Authentication pages
 │   ├── register/
 │   └── +layout.svelte  # Root layout
+.env                    # Environment variables
+.env.example           # Example environment variables
 ```
+
+## Environment Variables
+
+The following environment variables are required:
+
+| Variable | Description |
+|----------|-------------|
+| PUBLIC_POCKETBASE_URL | URL of your PocketBase instance |
 
 ## Authentication Flow
 

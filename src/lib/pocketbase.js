@@ -1,7 +1,7 @@
 import PocketBase from 'pocketbase';
 import { writable } from 'svelte/store';
 
-export const pb = new PocketBase('https://integritas.pockethost.io');
+export const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
 
 /**
  * @type {import('svelte/store').Writable<any>}
